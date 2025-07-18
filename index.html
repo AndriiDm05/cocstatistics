@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Imperial+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <title>CoC Players & Clans Info</title>
+        <style>
+            main{
+                min-height: 400px;
+                padding: 0 20px;
+                text-align: center;
+            }     
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <p><a href="#">CoC Statistics</a></p>
+                </div>
+                <ul>
+                    <li><a href="#" class="list-item" data-i18n="home">Home</a></li>
+                    <li><a href="players.html" class="list-item" data-i18n="players">Players</a></li>
+                    <li><a href="clans.html" class="list-item" data-i18n="clans">Clans</a></li>                  
+                </ul>
+                <div>
+                    <button id="toggleLang" onclick="toggleLanguage()"  class="translate-btn" data-i18n="toggleLanguage">UA</button>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper">
+            <div class="bg-image"></div>
+        </div>
+        <main>
+            <h1 data-i18n="welcome">Welcome to Clash of Clans Statistics!</h1>
+            <p data-i18n="welcomeText">If you're a Clash of Clans player and interesting in game stats, you can use our website!</p>
+        </main>
+        <!-- Player tag input -->
+         <div class="welcome-info">
+            <h2 data-i18n="aboutUs">About us</h2>
+            <p data-i18n="welcomeInfo">CoC Statistics - online platform, in which you have posibility to find any player or clan by tag and see information. Player's stats, clan's trophies, members, current war info - all you need. Besides, you can see rankings of top players and clans in UA and world. </p>
+            <h3 data-i18n="nextSteps" style="padding-top:20px;">Next steps:</h3>
+            <p style="padding-bottom:30px;"><a class="list-item" href="players.html">Players info</a> | <a class="list-item" href="clans.html">Clans stats</a></p>
+            <p data-i18n="explore">Let's explore!</p>
+        </div>
+        <footer>
+            <div>
+                <img src="coc.png" width="117" height="54" alt="Clash of Clans Logo" />
+                <p>© CoC Statistics | <span data-i18n="allRightsReserved">All rights reserved</span>.</p>
+            </div>
+        </footer>
+        <script src="js/fetchPlayer.js"></script>
+        <script src="js/fetchClan.js"></script>
+        <script src="js/showTopPlayers.js"></script>
+        <script src="js/showTopClans.js"></script>
+        <script src="js/translations.js"></script>
+        <script>
+        // Support for placeholder translation
+        function updatePlaceholders() {
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+        // Patch updateTranslations to also update placeholders
+        const origUpdateTranslations = window.updateTranslations;
+        window.updateTranslations = function() {
+            origUpdateTranslations();
+            updatePlaceholders();
+        };
+        window.addEventListener('DOMContentLoaded', updatePlaceholders);
+        </script>
+    </body>
+</html>

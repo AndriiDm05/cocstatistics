@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Imperial+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>CoC Players & Clans Info</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <p><a href="index.html">CoC Statistics</a></p>
+            </div>
+            <ul>
+                <li><a href="index.html" class="list-item" data-i18n="home">Home</a></li>
+                <li><a href="players.html" class="list-item" data-i18n="players">Players</a></li>
+                <li><a href="#" class="list-item" data-i18n="clans">Clans</a></li>
+            </ul>
+            <div>
+                <button id="toggleLang" onclick="toggleLanguage()" class="translate-btn"
+                    data-i18n="toggleLanguage">UA</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1 data-i18n="clans">Clans</h1>
+        <div id="clans">
+            <div id="search-clan">
+                <!--h2 data-i18n="clanInfo">Clan's info Clash of Clans</h2-->
+                <input type="text" id="clanTag" data-i18n-placeholder="placeholderClan" placeholder="Enter clan tag (without #)" />
+                <button onclick="fetchClan()" class="translate-btn" data-i18n="clanInfoBtn">Clan Info</button>
+                <button onclick="fetchCurrentWar()" class="translate-btn" data-i18n="currentWar">Current War</button>
+                <!--button onclick="fetchWarLeague()" class="translate-btn" data-i18n="currentCWL">Current CWL</button>
+                <button onclick="fetchCurrentCWLWar()" class="translate-btn" data-i18n="currentCWLRound">Current CWL round</button-->
+            </div>
+            <div id="list-clans">
+                <button onclick="showTopClans()" class="translate-btn" data-i18n="topClansUA"> Top clans
+                    (Ukraine)</button>
+                <button onclick="showTopClansGlobal()" class="translate-btn" data-i18n="topClansGlobal"> Top clans
+                    (World)</button>
+            </div>
+        </div>
+        <div id="output"></div>
+    </main>
+    <!-- Player tag input -->
+    <footer>
+        <div>
+            <img src="coc.png" width="117" height="54" alt="Clash of Clans Logo" />
+            <p>© CoC Statistics | <span data-i18n="allRightsReserved">All rights reserved</span>.</p>
+        </div>
+    </footer>
+    <script src="js/fetchPlayer.js"></script>
+    <script src="js/fetchClan.js"></script>
+    <script src="js/showTopPlayers.js"></script>
+    <script src="js/showTopClans.js"></script>
+    <script src="js/translations.js"></script>
+    <script>
+        // Support for placeholder translation
+        function updatePlaceholders() {
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+        // Patch updateTranslations to also update placeholders
+        const origUpdateTranslations = window.updateTranslations;
+        window.updateTranslations = function () {
+            origUpdateTranslations();
+            updatePlaceholders();
+        };
+        window.addEventListener('DOMContentLoaded', updatePlaceholders);
+    </script>
+</body>
+
+</html>
