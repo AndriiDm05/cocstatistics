@@ -1,6 +1,6 @@
 // Show top players in Ukraine / Показати топ гравців України
 async function showTopPlayers() {
-  const res = await fetch('http://localhost:3000/api/rankings/players/32000246'); // UA
+  const res = await fetch('https://cocstatistics.onrender.com/api/rankings/players/32000246'); // UA
   const players = await res.json();
   const output = document.getElementById('output');
 
@@ -22,7 +22,7 @@ async function showTopPlayers() {
 }
 // Show top players in the world / Показати топ гравців світу
 async function showTopPlayersGlobal() {
-  const res = await fetch('http://localhost:3000/api/rankings/players/global');
+  const res = await fetch('https://cocstatistics.onrender.com/api/rankings/players/global');
   const players = await res.json();
   const output = document.getElementById('output');
 

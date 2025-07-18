@@ -11,7 +11,7 @@ async function fetchPlayer() {
 
     try {
         // Запит до backend для отримання даних гравця / Request to backend for player data
-        const res = await fetch(`http://localhost:3000/api/player/${tag}`);
+        const res = await fetch(`https://cocstatistics.onrender.com/api/player/${tag}`);
         if (!res.ok) throw new Error(await res.text());
         const data = await res.json();
 
@@ -56,7 +56,7 @@ async function fetchPlayer() {
             const clanTag = data.clan.tag.replace("#", "");
 
             // Запит до backend для отримання даних клану / Request to backend for clan data
-            const clanInfoRes = await fetch(`http://localhost:3000/api/clan/${clanTag}`);
+            const clanInfoRes = await fetch(`https://cocstatistics.onrender.com/api/clan/${clanTag}`);
             if (!clanInfoRes.ok) throw new Error(await clanInfoRes.text());
             const clanInfo = await clanInfoRes.json();
 

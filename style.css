@@ -144,6 +144,7 @@ input{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 40%;
 }
 footer{
     width: 100%;
@@ -202,6 +203,9 @@ footer div{
     nav ul li{
         font-size: 18px;
         padding-right: 25px;
+    }
+    #output{
+        width: 100%;
     }
     table{
         font-size: 16px;

@@ -1,6 +1,6 @@
 // Show top clans in Ukraine / Показати топ кланів України
 async function showTopClans() {
-  const res = await fetch('http://localhost:3000/api/rankings/clans/32000246'); // UA
+  const res = await fetch('https://cocstatistics.onrender.com/api/rankings/clans/32000246'); // UA
   const clans = await res.json();
   const output = document.getElementById('output');
 
@@ -21,7 +21,7 @@ async function showTopClans() {
 }
 // Show top clans in the world / Показати топ кланів світу
 async function showTopClansGlobal() {
-  const res = await fetch('http://localhost:3000/api/rankings/clans/global');
+  const res = await fetch('https://cocstatistics.onrender.com/api/rankings/clans/global');
   const clans = await res.json();
   const output = document.getElementById('output');
 
