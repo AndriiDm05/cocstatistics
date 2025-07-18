@@ -11,7 +11,7 @@ async function fetchClan() {
 
     try {
         // Запит до backend для отримання даних клану / Request to backend for clan data
-        const res = await fetch(`http://localhost:3000/api/clan/${tag}`);
+        const res = await fetch(`https://clash-of-clans-stats-9fhj.onrender.com/api/clan/${tag}`);
         if (!res.ok) throw new Error(await res.text());
         const data = await res.json();
 
@@ -41,7 +41,7 @@ async function fetchClan() {
         `;
 
         // Запит до backend для отримання учасників клану / Request to backend for clan members
-        const membersRes = await fetch(`http://localhost:3000/api/clan/${tag}/members`);
+        const membersRes = await fetch(`https://clash-of-clans-stats-9fhj.onrender.com/api/clan/${tag}/members`);
         if (!membersRes.ok) throw new Error(await membersRes.text());
         const members = await membersRes.json();
 
@@ -73,7 +73,7 @@ async function fetchCurrentWar() {
 
     try {
         // Запит до backend для отримання даних війни / Request to backend for current war data
-        const res = await fetch(`http://localhost:3000/api/clan/${tag}/currentwar`);
+        const res = await fetch(`https://clash-of-clans-stats-9fhj.onrender.com/api/clan/${tag}/currentwar`);
         if (!res.ok) throw new Error(await res.text());
         const data = await res.json();
 
